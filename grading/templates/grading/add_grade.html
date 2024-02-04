@@ -1,0 +1,17 @@
+{% extends "grading/base.html" %}
+
+{% block body %}
+<form method="post" action={% url 'add_grade' %}>{% csrf_token %}
+    <input type="hidden" name="student" value={{ student }}>
+    <input type="hidden" name="subject" value={{ subject }}>
+    <label for="grade">Grade:</label>
+    <select id="grade" name="grade">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <input type="submit" value="Save">
+</form>
+{% endblock %}

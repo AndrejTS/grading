@@ -1,0 +1,6 @@
+{% if user.is_authenticated %}
+    <a href={% url 'logout' %}><button>Logout</button></a></br></br>
+{% endif %}
+
+{% block body %}
+{% endblock %}

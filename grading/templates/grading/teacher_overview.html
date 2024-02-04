@@ -1,0 +1,9 @@
+{% extends "grading/base.html" %}
+
+{% block body %}
+    <h1>Teacher: {{ teacher.user.username }}</h1>
+    <h3>Subjects</h3>
+    {% for subject in subjects %}
+        <h4><a href={% url 'teacher_subject' subject.code %}>{{ subject.code }}</a></h4>
+    {% endfor %} 
+{% endblock %}

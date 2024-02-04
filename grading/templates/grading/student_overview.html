@@ -1,0 +1,11 @@
+{% extends "grading/base.html" %}
+
+{% block body %}
+    <h1>Student: {{ student.user.username }}</h1>
+    {% for subject, grades in subjects.items %}
+        <h3>Subject: {{ subject }}</h3>
+        {% for grade in grades %}
+            {{ grade.grade }}
+        {% endfor %} 
+    {% endfor %} 
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "grading/base.html" %}
+
+{% block body %}
+    <h1>Teacher: {{ teacher.user.username }}</h1>
+    <h2><a href={% url 'teacher' %}>Back to subjects</a></h2>
+    <h2>Subject: {{ subject.code }}</h2>
+    {% for student, grades in students_grades.items %}
+        <h4>{{ student }}</h4>
+        <a href="{% url 'add_grade' student subject.code %}">Add grade</a>
+        </br></br>
+        {% for grade in grades %}
+            {{ grade.grade }}
+            <form action={% url 'delete_grade' %} method="post">
+                {% csrf_token %}
+                <input type="hidden" name="grade_pk" value={{ grade.pk }}>
+                <input type="hidden" name="subject_code" value={{ subject.code }}>
+                <button type="submit">Delete</button>
+            </form>
+        {% endfor %} 
+    {% endfor %} 
+{% endblock %}
